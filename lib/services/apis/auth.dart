@@ -12,11 +12,13 @@ import 'package:pass_slip_management/services/routes.dart';
 import 'package:pass_slip_management/utils/snackbars/snackbar_message.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../screens/home/success_scan.dart';
+
 class AuthServices{
   final Routes _routes = new Routes();
   final SnackbarMessage _snackbarMessage = new SnackbarMessage();
 
-  Future login(context,{required String email, required String pass, bool isManuall = true})async{
+  Future login(context,{required String email, required String pass, bool isManuall = true, int timer = 0})async{
     try{
       final url = Uri.parse('${networkUtils.networkUtils}/users.json');
       await http.get(
@@ -35,7 +37,11 @@ class AuthServices{
             if(isManuall){
               Navigator.of(context).pop(null);
             }
-            _routes.navigator_pushreplacement(context, Landing());
+            if(timer != 0){
+              _routes.navigator_pushreplacement(context, SuccessScan(date: "", timer: timer,));
+            }else{
+              _routes.navigator_pushreplacement(context, Landing());
+            }
           }else{
             authModel.loggedUser = null;
             if(isManuall){

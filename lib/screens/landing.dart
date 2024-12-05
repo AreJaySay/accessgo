@@ -1,6 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:pass_slip_management/screens/history/history.dart';
+import 'package:pass_slip_management/screens/calendar/calendar.dart';
 import 'package:pass_slip_management/screens/home/home.dart';
 import 'package:pass_slip_management/screens/profile/profile.dart';
 import 'package:pass_slip_management/services/routes.dart';
@@ -14,7 +14,7 @@ class Landing extends StatefulWidget {
 class _LandingState extends State<Landing> {
   final Routes _routes = new Routes();
   int _selectedIndex = 2;
-  List<Widget> _pages = [History(),Profile(),Home()];
+  List<Widget> _pages = [Calendar(),Profile(),Home()];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _LandingState extends State<Landing> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: AnimatedBottomNavigationBar(
           icons: [
-            Icons.history,
+            Icons.calendar_month,
             Icons.account_circle_outlined
           ],
           iconSize: 27,

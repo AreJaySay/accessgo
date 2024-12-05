@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:pass_slip_management/credentials/welcome.dart';
+import 'package:pass_slip_management/models/location.dart';
+import 'package:pass_slip_management/screens/home/success_scan.dart';
 import 'package:pass_slip_management/services/apis/auth.dart';
+import 'package:pass_slip_management/services/geolocator.dart';
 import 'package:pass_slip_management/services/routes.dart';
 import 'package:pass_slip_management/utils/palettes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +30,11 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       title: "Access Go",
       home: MyHomePage(),
     );
@@ -43,14 +52,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     // TODO: implement initState
-    Future.delayed(const Duration(seconds: 3), () async{
+    geolocatorServices.requestPermission().then((value)async{
+      setState(() {
+        locationModel.latitude = "${value.latitude}";
+        locationModel.longitude = "${value.longitude}";
+      });
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      var email = prefs.getString('email').toString();
-      var pass = prefs.getString('password').toString();
+      var email = prefs.getString('email');
+      var pass = prefs.getString('password');
+      int timer = prefs.getString('timer') == null ? 0 : int.parse(prefs.getString('timer')!);
       if(email == null && pass == null){
         _routes.navigator_pushreplacement(context, Welcome());
       }else{
-        authServices.login(context, email: email, pass: pass, isManuall: false);
+        authServices.login(context, email: email!, pass: pass!, isManuall: false, timer: timer);
       }
     });
     super.initState();
