@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/qonvexmacmini1/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/qonvexmacmini1/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Volumes/Rolando External Support Drive/Rolando Files/Freelance/Capstones/pass slip management/pass_slip_management/android/app/.cxx/Debug/3s246t4z/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/qonvexmacmini1/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Volumes/Rolando External Support Drive/Rolando Files/Freelance/Capstones/pass slip management/pass_slip_management/android/app/.cxx/Debug/3s246t4z/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

@@ -1,4 +1,4 @@
-import 'package:flare_flutter/flare_actor.dart';
+import 'package:cool_flare/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:pass_slip_management/credentials/register/register.dart';

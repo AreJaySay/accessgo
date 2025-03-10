@@ -1,0 +1,2 @@
+/Volumes/Rolando External Support Drive/Rolando Files/Freelance/Capstones/pass slip management/pass_slip_management/android/app/.cxx/Debug/3s246t4z/x86_64/CMakeFiles/edit_cache.dir
+/Volumes/Rolando External Support Drive/Rolando Files/Freelance/Capstones/pass slip management/pass_slip_management/android/app/.cxx/Debug/3s246t4z/x86_64/CMakeFiles/rebuild_cache.dir

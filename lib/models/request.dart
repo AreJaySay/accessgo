@@ -1,18 +1,24 @@
 import 'package:pass_slip_management/models/auth.dart';
 
 class RequestModel{
+  String employee_name;
   String date;
-  String time;
+  String request_type;
+  String start_time;
+  String end_time;
+  String purpose;
+  String official_name;
   String reason;
-  String status;
-  String expiration;
 
   RequestModel({
+    this.employee_name = "",
     this.date = "",
+    this.request_type = "",
+    this.start_time = "",
+    this.end_time = "",
+    this.purpose = "",
+    this.official_name = "",
     this.reason = "",
-    this.time = "",
-    this.status = "Pending",
-    this.expiration = "NA"
   });
 
   Map<String, dynamic> toMap({String key = ""}) => {
@@ -21,19 +27,24 @@ class RequestModel{
       "lastname": authModel.loggedUser!["lastname"],
       "email": authModel.loggedUser!["email"],
       "date": date,
-      "time": time,
+      "request_type": request_type,
+      "start_time": start_time,
+      "end_time": end_time,
+      "purpose": purpose,
+      "official_name": official_name,
       "reason": reason,
-      "status": status,
-      "expiration": expiration
+      "status": "Pending"
     }else...{
       "$key/firstname": authModel.loggedUser!["firstname"],
       "$key/lastname": authModel.loggedUser!["lastname"],
       "$key/email": authModel.loggedUser!["email"],
-      "$key/date": date,
-      "$key/time": time,
+      "$key/request_type": request_type,
+      "$key/start_time": start_time,
+      "$key/end_time": end_time,
+      "$key/purpose": purpose,
+      "$key/official_name": official_name,
       "$key/reason": reason,
-      "$key/status": status,
-      "$key/expiration": expiration
+      "status": "Pending"
     }
   };
 }
