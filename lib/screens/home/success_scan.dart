@@ -64,7 +64,7 @@ class _SuccessScanState extends State<SuccessScan> with TickerProviderStateMixin
         DatabaseReference ref = FirebaseDatabase.instance.ref("requests");
         FirebaseDatabase.instance.ref().child('requests').orderByChild("date").equalTo(widget.date).onChildAdded.forEach((event)async{
           await ref.update({
-            "${event.snapshot.key!}/expiration": "${DateTime.now().add(Duration(minutes: 3))}",
+            "${event.snapshot.key!}/end_time": "${DateTime.now().add(Duration(minutes: 3))}",
           });
         });
       });
