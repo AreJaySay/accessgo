@@ -25,19 +25,19 @@ class _SuccessScanState extends State<SuccessScan> with TickerProviderStateMixin
   AnimationController? _controller;
   Timer? timer;
 
-  Future _getLocation()async{
-   await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high)
-        .then((position) {
-      DatabaseReference ref = FirebaseDatabase.instance.ref("locations");
-      FirebaseDatabase.instance.ref().child('locations').orderByChild("email").equalTo(authModel.loggedUser!["email"]).onChildAdded.forEach((event){
-        ref.update({
-          "${event.snapshot.key!}/latitude": "${position.latitude}",
-          "${event.snapshot.key!}/longitude": "${position.longitude}",
-        });
-      });
-    });
-  }
+  // Future _getLocation()async{
+  //  await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.high)
+  //       .then((position) {
+  //     DatabaseReference ref = FirebaseDatabase.instance.ref("locations");
+  //     FirebaseDatabase.instance.ref().child('locations').orderByChild("email").equalTo(authModel.loggedUser!["email"]).onChildAdded.forEach((event){
+  //       ref.update({
+  //         "${event.snapshot.key!}/latitude": "${position.latitude}",
+  //         "${event.snapshot.key!}/longitude": "${position.longitude}",
+  //       });
+  //     });
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -50,7 +50,7 @@ class _SuccessScanState extends State<SuccessScan> with TickerProviderStateMixin
   void initState() {
     // TODO: implement initState
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 30), (Timer t) => _getLocation());
+    // timer = Timer.periodic(Duration(seconds: 30), (Timer t) => _getLocation());
     _controller = AnimationController(
         vsync: this,
         duration: Duration(
